@@ -1,5 +1,5 @@
 // initial state of the customer
-const customerInitialstate={
+export const customerInitialstate={
     fullName:"",
     nationalId:"",
     createdAt:"",
@@ -33,9 +33,10 @@ const customerInitialstate={
     }
     }
   }
-  export const updateCustomer=()=>{
+  export const updateCustomer=(fullName)=>{
     return{
       type:"customer/updateCustomer",
       payload:fullName
     }
-  }
+  }; 
+  export default customerReducer;

@@ -1,6 +1,6 @@
 // initial state for the account 
 const accountInitialState = {
-    balance: 0,
+    balance: 1500,
     loan: 0,
     loanPurpose: "",
   };
@@ -38,22 +38,20 @@ export const accountReducer = (state = accountInitialState, action) => {
    return state;
   };
   // action/creators for the account reducer
-  export const deposit=(amount)=>{
+  export const deposit =(amount)=>{
     return {
       type:"account/deposit",
       payload:amount,
     }
-  }
-  store.dispatch(deposit(1500));
-  console.log(store.getState());
+  };
+  
   export const withdraw=(amount)=>{
     return{
       type:"account/withdraw",
       payload:amount,
     }
-  }
-  store.dispatch(withdraw(1500));
-  console.log(store.getState());
+  };
+ 
   export const requestLoan=(purpose,amount)=>{
     return{
       type:"account/requestLoan",
@@ -68,4 +66,5 @@ export const accountReducer = (state = accountInitialState, action) => {
     return{
       type:"account/payloan",
     }
-  }
+  };
+  export default accountReducer;
