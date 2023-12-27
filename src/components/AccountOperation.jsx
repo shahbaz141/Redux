@@ -1,25 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import accountReducer, { withdraw } from "../features/account/accountSlice";
+import accountReducer, { deposit, withdraw } from "../features/account/accountSlice";
 
 const AccountOperation = () => {
-  const [deposit, setDeposit] = useState("");
+  const [deposite, setDeposit] = useState("");
   const [currency, setCurrency] = useState("USD");
-  const [withdraw, setWithdraw] = useState("");
+  const [withdrawe, setWithdraw] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
-  const handleDeposit = () => {};
-  const handlewithdraw = () => {};
-  const handleRequest=()=>{};
-  const handlePayloan=()=>{};
-  const Account=useSelector((state)=>state.account);
+  const checkAcc=useSelector((state)=>state.account);
+  const handleDeposit = () => {
+    if(!deposite)return
+    dispatch(deposit(deposite));
+  };
+  console.log(checkAcc,"account status")
+  const handlewithdraw = () => {
+    if(checkAcc.balance=="") return alert("cannot withdraw")
+    else
+  dispatch(withdraw(withdrawe));
+  };
+  const handleRequest = () => {};
+  const handlePayloan = () => {};
+  const Account = useSelector((state) => state.account);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    // deposit/withdraw/loan action when the component mounts but not working-----------------
-    // dispatch(withdraw(1000)); 
-  }, [dispatch]);
-  console.log(Account)
+  // useEffect(() => {
+  //   // deposit/withdraw/loan action when the component mounts but not working error says deposit is not a function-----------------
+  //   // dispatch(withdraw(1000));
+  // }, [dispatch]);
+  // console.log(Account);
   return (
     <div className="inputs">
       <div className="inp">
@@ -28,7 +37,7 @@ const AccountOperation = () => {
           <input
             type="number"
             id="deposit"
-            value={deposit}
+            value={deposite}
             onChange={(e) => setDeposit(e.target.value)}
           />
         </div>
@@ -44,7 +53,7 @@ const AccountOperation = () => {
         <input
           type="number"
           id="withdraw"
-          value={withdraw}
+          value={withdrawe}
           onChange={(e) => setWithdraw(e.target.value)}
         />
         <button onClick={handlewithdraw}>Withdraw</button>

@@ -3,6 +3,7 @@ import CreateCustomer from "./components/CreateCustomer";
 import Customer from "./components/Customer";
 import AccountOperation from "./components/AccountOperation";
 import { useSelector } from "react-redux";
+import AccountDetails from "./components/AccountDetails";
 
 const App = () => {
   const state = useSelector((state) => state.customer);
@@ -16,6 +17,7 @@ const App = () => {
         <>
           <Customer />
           <AccountOperation />
+          <AccountDetails/>
         </>
        )} 
     </div>

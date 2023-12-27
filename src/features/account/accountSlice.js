@@ -1,7 +1,7 @@
 // initial state for the account 
 const accountInitialState = {
-    balance: 1500,
-    loan: 0,
+    balance: "",
+    loan: "",
     loanPurpose: "",
   };
   // account reducer functions
