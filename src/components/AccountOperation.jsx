@@ -1,26 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import accountReducer, { deposit, withdraw } from "../features/account/accountSlice";
+import accountReducer, {
+  deposit,
+  payloan,
+  requestLoan,
+  withdraw,
+} from "../features/account/accountSlice";
 
-const AccountOperation = () => {
+const AccountOperation = ({setCurrency1}) => {
   const [deposite, setDeposit] = useState("");
   const [currency, setCurrency] = useState("USD");
   const [withdrawe, setWithdraw] = useState("");
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
-  const checkAcc=useSelector((state)=>state.account);
+  const checkAcc = useSelector((state) => state.account);
+  useEffect(() => {
+    setCurrency1(currency); // Update the currency in the parent component using setCurrency1
+  }, [currency, setCurrency1]);
   const handleDeposit = () => {
-    if(!deposite)return
+    if (!deposite) return;
     dispatch(deposit(deposite));
+    setDeposit("");
   };
-  console.log(checkAcc,"account status")
+  console.log(checkAcc, "account status");
   const handlewithdraw = () => {
-    if(checkAcc.balance=="") return alert("cannot withdraw")
-    else
-  dispatch(withdraw(withdrawe));
+    if (checkAcc.balance == 0 || withdrawe > checkAcc.balance)
+      return alert("cannot withdraw balance is less than withdraw");
+    else dispatch(withdraw(withdrawe));
+    setWithdraw("");
   };
-  const handleRequest = () => {};
-  const handlePayloan = () => {};
+  const handleRequest = () => {
+    if(!checkAcc.loan==0 ||!checkAcc.loanPurpose=="") return alert("already loan taken or LoanPurpose added ");
+    if(loanPurpose=="") return alert("enter the LoanPurpose");
+      dispatch(requestLoan(loanPurpose,loanAmount))
+      setLoanAmount("");
+      setLoanPurpose("");
+    };
+  
+  const handlePayloan = () => {
+    if(!checkAcc.laon==0)
+      return
+      dispatch(payloan());
+    
+  };
   const Account = useSelector((state) => state.account);
   const dispatch = useDispatch();
 

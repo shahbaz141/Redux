@@ -38,6 +38,11 @@ button {
 	min-width: 180px;
 	text-align: center;
 }
+.inner{
+	width: 20px;
+	display: flex;
+	flex-direction: row;
+}
 .inp{
   display: flex;
   flex-direction: row;
