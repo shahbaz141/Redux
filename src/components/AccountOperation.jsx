@@ -14,12 +14,12 @@ const AccountOperation = ({setCurrency1}) => {
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPurpose, setLoanPurpose] = useState("");
   const checkAcc = useSelector((state) => state.account);
-  useEffect(() => {
+   useEffect(() => {
     setCurrency1(currency); // Update the currency in the parent component using setCurrency1
   }, [currency, setCurrency1]);
   const handleDeposit = () => {
     if (!deposite) return;
-    dispatch(deposit(deposite));
+    dispatch(deposit(deposite,currency));
     setDeposit("");
   };
   console.log(checkAcc, "account status");
@@ -64,9 +64,9 @@ const AccountOperation = ({setCurrency1}) => {
           />
         </div>
         <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
-          <option value="Us dollar">Us dollar</option>
-          <option value="pound">Pound</option>
-          <option value="euro">Euro</option>
+          <option value="USD">Us dollar</option>
+          <option value="GBP">Pound</option>
+          <option value="EUR">Euro</option>
         </select>
         <button onClick={handleDeposit}>Deposit</button>
       </div>

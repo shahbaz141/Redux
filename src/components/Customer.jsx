@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deposit } from '../features/account/accountSlice';
+
 
 const Customer = () => {
   const customerState=useSelector((state)=>state.customer);
