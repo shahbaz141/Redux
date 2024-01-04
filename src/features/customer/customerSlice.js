@@ -10,11 +10,21 @@ export const customerInitialstate={
 name:"customer",
 initialState:customerInitialstate,
 reducers:{
-  createCustomer:(state,action)=>{
-    state.fullName=action.payload.fullName;
-    state.nationalId=action.payload.nationalId;
-    state.createdAt=new Date().now;
+  CreateCustomer:{
+    prepare:(name,id)=>{
+      return{
+        payload:{
+          name,
+          id,
+        }
+      }
+    },
+    reducer:(state,action)=>{
+      state.fullName=action.payload.fullName;
+      state.nationalId=action.payload.nationalId;
+     
   },
+},
   updateCustomer:(state,action)=>{
     state.fullName=action.payload.fullName;
   }
@@ -56,5 +66,4 @@ reducers:{
   // }; 
   // export default customerReducer;
   export const {createCustomer,updateCustomer}=customerSlice.actions
-  console.log(createCustomer("shahbaz",123))
   export default customerSlice.reducer
