@@ -27,7 +27,7 @@ const accountSlice=createSlice({
       },
       reducer:(state,action)=>{
       state.loan=action.payload.amount;
-      state.balance=state.balance+action.payload.amount;
+      state.balance=state.balance+parseFloat(action.payload.amount);
       state.loanPurpose=action.payload.purpose
       }
     },

@@ -10,7 +10,7 @@ export const customerInitialstate={
 name:"customer",
 initialState:customerInitialstate,
 reducers:{
-  CreateCustomer:{
+  createCustomer:{
     prepare:(name,id)=>{
       return{
         payload:{
