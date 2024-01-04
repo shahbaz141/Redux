@@ -3,7 +3,8 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 // import { thunk } from "redux-thunk";
 import { configureStore } from "@reduxjs/toolkit";
 import accountReducer from "./features/account/accountSlice";
-import customerReducer from "./features/customer/customerSlice";
+import customerReducer from "./features/account/accountSlice";
+
 
 // here we will write the function to use multiple reducers
 // const rootReducer=combineReducers({
